@@ -1,6 +1,7 @@
+requiere("dotenv").config()
 module.exports = {
-  HOST: '',
-  USER: '',
-  PASSWORD: '',
-  DB: '',
+  HOST: process.env.HOST,
+  USER: process.env.USER,
+  PASSWORD: process.env.PASS,
+  DB: process.env.DB,
 }
