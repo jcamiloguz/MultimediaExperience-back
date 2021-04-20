@@ -1,10 +1,16 @@
+CREATE TABLE `school` (
+  `id` int PRIMARY KEY,
+  `school_name` varchar(255)
+);
+
 CREATE TABLE `user` (
   `id` int PRIMARY KEY,
-  `name` varchar(255),
-  `last_name` varchar(255),
+  `user_name` varchar(255),
+  `user_last_name` varchar(255),
   `email` varchar(255),
   `created_at` date,
-  `born_date` date
+  `born_date` date,
+  `id_school` int
 );
 
 CREATE TABLE `question` (
@@ -33,11 +39,13 @@ CREATE TABLE `opinion` (
 
 CREATE TABLE `admin` (
   `id` int PRIMARY KEY,
-  `name` varchar(255),
-  `last_name` varchar(255),
+  `admin_name` varchar(255),
+  `admin_last_name` varchar(255),
   `email` varchar(255),
   `password` varchar(255)
 );
+
+ALTER TABLE `user` ADD FOREIGN KEY (`id_school`) REFERENCES `school` (`id`);
 
 ALTER TABLE `option` ADD FOREIGN KEY (`id_question`) REFERENCES `question` (`id`);
 
