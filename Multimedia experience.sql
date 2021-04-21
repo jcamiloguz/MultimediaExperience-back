@@ -1,58 +1,58 @@
-CREATE TABLE `school` (
-  `id` int PRIMARY KEY,
-  `school_name` varchar(255)
+CREATE TABLE `schools` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(255) NOT NULL 
 );
 
-CREATE TABLE `user` (
-  `id` int PRIMARY KEY,
-  `user_name` varchar(255),
-  `user_last_name` varchar(255),
-  `email` varchar(255),
-  `created_at` date,
-  `born_date` date,
-  `id_school` int
+CREATE TABLE `users` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) NOT NULL ,
+  `user_last_name` varchar(255) NOT NULL ,
+  `email` varchar(255) NOT NULL ,
+  `created_at` date NOT NULL ,
+  `born_date` date NOT NULL , 
+  `id_school` int NOT NULL 
 );
 
-CREATE TABLE `question` (
-  `id` int PRIMARY KEY,
-  `content_question` varchar(255)
+CREATE TABLE `questions` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `content_question` varchar(255) NOT NULL 
 );
 
-CREATE TABLE `option` (
-  `id` int PRIMARY KEY,
-  `id_question` int,
-  `content_option` varchar(255)
+CREATE TABLE `options` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id_question` int NOT NULL ,
+  `content_option` varchar(255) NOT NULL 
 );
 
-CREATE TABLE `answer` (
-  `id` int PRIMARY KEY,
-  `id_user` int,
-  `id_question` int,
-  `id_option` int
+CREATE TABLE `answers` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT ,
+  `id_user` int NOT NULL ,
+  `id_question` int NOT NULL ,
+  `id_option` int NOT NULL 
 );
 
-CREATE TABLE `opinion` (
-  `id` int PRIMARY KEY,
-  `id_user` int,
-  `content_opinion` varchar(255)
+CREATE TABLE `opinions` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT ,
+  `id_user` int NOT NULL ,
+  `content_opinion` varchar(255) NOT NULL 
 );
 
-CREATE TABLE `admin` (
-  `id` int PRIMARY KEY,
-  `admin_name` varchar(255),
-  `admin_last_name` varchar(255),
-  `email` varchar(255),
-  `password` varchar(255)
+CREATE TABLE `admins` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `admin_name` varchar(255) NOT NULL ,
+  `admin_last_name` varchar(255) NOT NULL ,
+  `email` varchar(255) NOT NULL ,
+  `password` varchar(255) NOT NULL 
 );
 
-ALTER TABLE `user` ADD FOREIGN KEY (`id_school`) REFERENCES `school` (`id`);
+ALTER TABLE `users` ADD FOREIGN KEY (`id_school`) REFERENCES `schools` (`id`);
 
-ALTER TABLE `option` ADD FOREIGN KEY (`id_question`) REFERENCES `question` (`id`);
+ALTER TABLE `options` ADD FOREIGN KEY (`id_question`) REFERENCES `questions` (`id`);
 
-ALTER TABLE `answer` ADD FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+ALTER TABLE `answers` ADD FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
-ALTER TABLE `answer` ADD FOREIGN KEY (`id_question`) REFERENCES `question` (`id`);
+ALTER TABLE `answers` ADD FOREIGN KEY (`id_question`) REFERENCES `questions` (`id`);
 
-ALTER TABLE `answer` ADD FOREIGN KEY (`id_option`) REFERENCES `option` (`id`);
+ALTER TABLE `answers` ADD FOREIGN KEY (`id_option`) REFERENCES `options` (`id`);
 
-ALTER TABLE `opinion` ADD FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+ALTER TABLE `opinions` ADD FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
