@@ -1,4 +1,4 @@
-const Answer = require('../models/answer.model')
+const Opinion = require('../models/opinion.model')
 
 exports.create = (req, res) => {
   if (!req.body) {
@@ -7,12 +7,12 @@ exports.create = (req, res) => {
     })
   }
 
-  const newAnswer = new Answer({
-    id_question: req.body.id_question || null,
+  const newOpinion = new Opinion({
     id_user: req.body.id_user || null,
-   id_option: req.body.id_option || null,
+    content_opinion: req.body.content_opinion || null,
+    score: req.body.score || null,
   })
-  Answer.createAnswer(newAnswer, (err, data) => {
+  Opinion.createOpinion(newOpinion, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || 'Some error occurred while retrieving cities.',
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
   })
 }
 exports.findAll = (req, res) => {
-  Answer.getAll((err, data) => {
+  Opinion.getAll((err, data) => {
     if (err) {
       res.status(500).send({
         message:

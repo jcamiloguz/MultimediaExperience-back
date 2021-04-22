@@ -16,6 +16,7 @@ require('./app/routes/admin.routes')(app)
 require('./app/routes/user.routes')(app)
 require('./app/routes/school.routes')(app)
 require('./app/routes/answer.routes')(app)
+require('./app/routes/opinion.routes')(app)
 app.listen(PORT, () => {
   console.log(`Server is running on port : ${PORT}`)
 })
