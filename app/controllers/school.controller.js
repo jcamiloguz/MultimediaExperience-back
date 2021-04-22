@@ -6,7 +6,7 @@ exports.create = (req, res) => {
       message: 'Content can not be empty!',
     })
   }
-  console.log(req)
+
   const newSchool = new School({
     school_name: req.body.school_name || null,
   })
