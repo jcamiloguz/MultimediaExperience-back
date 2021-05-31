@@ -36,3 +36,28 @@ exports.findAll = (req, res) => {
     }
   })
 }
+exports.findAllAge = (req, res) => {
+  User.getAllAge((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while retrieving positions.',
+      })
+    } else {
+      res.send(data)
+    }
+  })
+}
+
+exports.findQuestions = (req, res) => {
+  User.getQuestion((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while retrieving positions.',
+      })
+    } else {
+      res.send(data)
+    }
+  })
+}
